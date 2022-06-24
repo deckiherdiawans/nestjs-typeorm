@@ -1,6 +1,7 @@
-import { Body, Controller, Delete, Get, HttpStatus, Param, Patch, Post, Res } from '@nestjs/common'
+import { Body, Controller, Delete, Get, HttpStatus, Param, Patch, Post, Query, Res } from '@nestjs/common'
 import { AppService } from './app.service'
 import { CreateAppDto } from './create-app.dto'
+import { PaginationQueryDto } from './pagination-query.dto'
 import { UpdateAppDto } from './update-app.dto'
 
 @Controller("api")
@@ -11,7 +12,9 @@ export class AppController {
   // getHello(): string { return this.appService.getHello() }
 
   @Get()
-  findAll() { return this.appService.findAll() }
+  findAll(@Query() paginationQuery: PaginationQueryDto) {
+    return this.appService.findAll(paginationQuery)
+  }
 
   @Get(":id")
   findOne(@Param("id") id: number) {
@@ -19,13 +22,13 @@ export class AppController {
   }
 
   @Post()
-  // create(@Body() dto: CreateAppDto) {
-  //   return this.appService.create(dto)
-  // }
-  post() {
-    const status = { message: HttpStatus.CREATED }
-    return status
+  create(@Body() dto: CreateAppDto) {
+    return this.appService.create(dto)
   }
+  // post() {
+  //   const status = { message: HttpStatus.CREATED }
+  //   return status
+  // }
 
   @Patch(":id")
   update(@Param("id") id: number, @Body() dto: UpdateAppDto) {

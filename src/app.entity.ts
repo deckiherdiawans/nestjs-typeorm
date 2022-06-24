@@ -7,12 +7,19 @@ export class App {
   id: number
 
   @Column()
-  name: string
+  title: string
 
   @Column()
   brand: string
 
+  @Column({ default: 0 })
+  recommendations: number
+
   @JoinTable()
-  @ManyToMany(type => Flavor, flavor => flavor.apps)
-  flavors: string[]
+  @ManyToMany(
+    type => Flavor,
+    flavor => flavor.apps,
+    { cascade: true }
+  )
+  flavors: Flavor[]
 }

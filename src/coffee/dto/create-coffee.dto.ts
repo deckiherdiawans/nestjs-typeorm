@@ -1,11 +1,13 @@
 import { IsString } from "class-validator"
 
-export class CreateAppDto {
+export class CreateCoffeeDto {
   @IsString()
   readonly name: string
 
   @IsString()
-  readonly brand: string
+  readonly description: string
+
+  readonly recommendations: number
 
   @IsString({ each: true })
   readonly flavors: string[]

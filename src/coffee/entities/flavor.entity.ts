@@ -1,5 +1,5 @@
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm"
-import { App } from "./app.entity"
+import { Coffee } from "./coffee.entity"
 
 @Entity()
 export class Flavor {
@@ -9,6 +9,6 @@ export class Flavor {
   @Column()
   name: string
 
-  @ManyToMany(type => App, app => app.flavors)
-  apps: App[]
+  @ManyToMany(type => Coffee, coffee => coffee.flavors)
+  coffees: Coffee[]
 }

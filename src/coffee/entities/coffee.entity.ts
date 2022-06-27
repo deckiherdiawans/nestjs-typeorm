@@ -2,15 +2,15 @@ import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "t
 import { Flavor } from "./flavor.entity"
 
 @Entity()
-export class App {
+export class Coffee {
   @PrimaryGeneratedColumn()
   id: number
 
   @Column()
-  title: string
+  name: string
 
-  @Column()
-  brand: string
+  @Column({ default: "-" })
+  description: string
 
   @Column({ default: 0 })
   recommendations: number
@@ -18,7 +18,7 @@ export class App {
   @JoinTable()
   @ManyToMany(
     type => Flavor,
-    flavor => flavor.apps,
+    flavor => flavor.coffees,
     { cascade: true }
   )
   flavors: Flavor[]

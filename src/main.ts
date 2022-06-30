@@ -1,10 +1,10 @@
-import { ValidationPipe } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { CoffeeModule } from './coffee/coffee.module'
+import { ValidationPipe } from '@nestjs/common'
 
 async function bootstrap() {
-  const coffee = await NestFactory.create(CoffeeModule)
-  coffee.useGlobalPipes(
+  const app = await NestFactory.create(CoffeeModule)
+  app.useGlobalPipes(
     new ValidationPipe({
       whitelist: false,
       forbidNonWhitelisted: true,
@@ -14,6 +14,6 @@ async function bootstrap() {
       }
     })
   )
-  await coffee.listen(3000)
+  await app.listen(3000)
 }
 bootstrap()

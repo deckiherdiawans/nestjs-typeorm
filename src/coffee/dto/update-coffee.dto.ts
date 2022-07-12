@@ -1,6 +1,4 @@
-export class UpdateCoffeeDto {
-  readonly name?: string
-  readonly description?: string
-  readonly recommendations?: number
-  readonly flavors?: string[]
-}
+import { PartialType } from "@nestjs/swagger"
+import { CreateCoffeeDto } from "./create-coffee.dto"
+
+export class UpdateCoffeeDto extends PartialType(CreateCoffeeDto) { }

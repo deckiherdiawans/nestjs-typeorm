@@ -9,8 +9,8 @@ export class Coffee {
   @Column()
   name: string
 
-  @Column({ default: "-" })
-  description: string
+  @Column()
+  brand: string
 
   @Column({ default: 0 })
   recommendations: number

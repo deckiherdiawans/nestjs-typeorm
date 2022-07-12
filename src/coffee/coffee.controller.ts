@@ -5,7 +5,9 @@ import { UpdateCoffeeDto } from './dto/update-coffee.dto'
 import { PaginationQueryDto } from './dto/pagination-query.dto'
 import { REQUEST } from '@nestjs/core'
 import { Request } from 'express'
+import { ApiForbiddenResponse, ApiTags } from '@nestjs/swagger'
 
+@ApiTags("Coffee")
 @UsePipes(ValidationPipe)
 @Controller("coffee")
 export class CoffeeController {
@@ -16,6 +18,7 @@ export class CoffeeController {
     console.log("[Nest] CoffeeController created")
   }
 
+  @ApiForbiddenResponse({ description: "Forbidden." })
   @Get()
   findAll(@Query() paginationQuery: PaginationQueryDto) {
     return this.coffeeService.findAll(paginationQuery)

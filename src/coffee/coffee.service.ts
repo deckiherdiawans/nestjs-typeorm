@@ -22,9 +22,7 @@ export class CoffeeService {
     private readonly coffeeConfiguration: ConfigType<typeof coffeeConfig>,
     private readonly connection: Connection,
     @Inject(COFFEE_BRANDS) coffeeBrands: string[]
-  ) {
-    console.log("[Nest] CoffeeService instantiated - " + coffeeConfiguration.foo)
-  }
+  ) { }
 
   findAll(paginationQuery: PaginationQueryDto) {
     const { limit, offset } = paginationQuery

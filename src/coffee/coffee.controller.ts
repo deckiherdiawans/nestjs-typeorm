@@ -14,9 +14,7 @@ export class CoffeeController {
   constructor(
     private readonly coffeeService: CoffeeService,
     @Inject(REQUEST) private readonly request: Request
-  ) {
-    console.log("[Nest] CoffeeController created")
-  }
+  ) { }
 
   @ApiForbiddenResponse({ description: "Forbidden." })
   @Get()

@@ -10,7 +10,7 @@ export class Coffee {
   name: string
 
   @Column()
-  brand: string
+  description: string
 
   @Column({ default: 0 })
   recommendations: number

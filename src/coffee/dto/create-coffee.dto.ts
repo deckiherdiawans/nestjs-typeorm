@@ -8,7 +8,7 @@ export class CreateCoffeeDto {
 
   @ApiProperty({ description: "The brand of the coffee." })
   @IsString()
-  readonly brand: string
+  readonly description: string
 
   @ApiProperty({ example: [] })
   @IsString({ each: true })
